@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.img-logo{
+  width: 300px; 
+  height: auto; 
+  margin-right: 20px; 
+
+}
+.img-carrito {
+  width: 30px; 
+  height: auto; 
+  margin-top: 10px;
+  margin-right: 10px; 
+}
