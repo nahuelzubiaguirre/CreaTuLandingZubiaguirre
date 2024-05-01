@@ -3,12 +3,16 @@ import logo from "../../assets/logo.png"
 
 const NavBar = () => {
     return (
-        <nav>
+        <nav className="NavBar">
+            <Link to='/'>
+                <h3>Ecomerce</h3>
+            </Link>
             <img src={logo} className ="img-logo" alt="logo" />
             <div>
-                <button className="navbar-buton">Producto1</button>
-                <button className="navbar-buton">Producto2</button>
-                <button className="navbar-buton">Producto3</button>
+                <NavLink to={`/category/celular`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Celulares</NavLink>
+                <NavLink to={`/category/tablet`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Tablets</NavLink>
+                <NavLink to={`/category/notebook`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Notebooks</NavLink>
+            
             </div>
             <CartWidget />
         </nav>
