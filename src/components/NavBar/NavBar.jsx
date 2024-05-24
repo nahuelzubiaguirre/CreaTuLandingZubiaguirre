@@ -1,22 +1,23 @@
-import CartWidget from "../CartWidget/CartWidget"
-import logo from "../../assets/logo.png"
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+function NavBar() {
     return (
-        <nav className="NavBar">
-            <Link to='/'>
-                <h3>Ecomerce</h3>
-            </Link>
-            <img src={logo} className ="img-logo" alt="logo" />
-            <div>
-                <NavLink to={`/category/celular`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Celulares</NavLink>
-                <NavLink to={`/category/tablet`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Tablets</NavLink>
-                <NavLink to={`/category/notebook`} className={({ isActive}) => isActive ? 'ActiveOption': 'Option'}>Notebooks</NavLink>
-            
-            </div>
-            <CartWidget />
-        </nav>
-    )
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand to='/' as={Link}>Home</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link to='/category/smartphones' as={Link} >Smartphones</Nav.Link>
+              <Nav.Link to='/category/laptops' as={Link} >Laptops</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
 }
-
-export default NavBar 
+  
+export default NavBar;

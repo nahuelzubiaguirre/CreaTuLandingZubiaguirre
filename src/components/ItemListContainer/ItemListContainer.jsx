@@ -1,40 +1,28 @@
-import { useState, useEffect } from "react"
-// ximport { getProducts} from ''
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
 import ItemList from '../ItemList/ItemList'
+import {useState, useEffect} from 'react' 
+import { useParams } from 'react-router-dom'
 
-const ItemListContainer = ({greeting}) => {
-    const [products, setProducts] = useState ([])
+function ItemListContainer () {
+    const [items,setItems] = useState ([])
 
     const { categoryId } = useParams()
 
-    useEffect(() => {
-        const asyncFunc = categoryId ? getProductsByCategory : getProducts
-
-        asyncFunc(categoryId)
-            .then(response =>{
-                setProducts(response)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }, [categoryId] )
-
- //   useEffect(() => {
-   //     getProducts()
-     //   .then(response =>{
-       //     setProducts(response)
-        //})
-       // .catch(error => {
-        //    console.error(error)
-        //})
-    //}, [])
+    useEffect (() => {
+        fetch(`https://dummyjson.com/products/category/${categoryId}`)
+            .then(res => res.json())
+            .then(data => setItems(data.products));
+    
+    }, [categoryId])
 
     return (
-        <div>
-            <h1>{greeting}</h1>
-            <ItemList products={products}/>
-        </div>
+        <Container fluid>
+            <Row>
+                <ItemList productos={items} />
+            </Row>
+        </Container>
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;

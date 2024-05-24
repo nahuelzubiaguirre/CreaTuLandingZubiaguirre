@@ -1,12 +1,14 @@
-import './ItemList.css'
+/* eslint-disable react/prop-types */
 import Item from '../Item/Item'
 
-const ItemList =({products}) => {
+function ItemList ({productos}) {
     return (
-        <div className='ListGroup'>
-            {products.map(prod => <Item key={prod.id} {..prod} />)}
-        </div>
+        <>
+        {productos.map(producto => (
+            <Item producto={producto} key={producto.id} />
+        ))}
+        </>
     )
 }
 
-export default ItemList
+export default ItemList;

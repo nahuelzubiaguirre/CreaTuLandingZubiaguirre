@@ -1,28 +1,26 @@
-import './Item.css'
+/* eslint-disable react/prop-types */
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
-const Item =({id,name,img,price,stock}) => {
-    
-    return (
-        <article className='CardItem'>
-            <header className='Header'>
-                <h2 className='ItemHeader'>
-                    {name}
-                </h2>
-            </header>
-            <picture>
-                <img src={img} alt={name} className='ItemImg' />
-            </picture>
-            <section>
-                <p className='Info'>
-                    Precio: ${price}
-                </p>
-                <p className='Info'>
-                    Stock disponible: {stock}
-                </p>
-            </section>
-            <footer className='ItemFooter'>
-                <Link to={`/item/${id}`} className='Option'> Ver detalle </Link>
-            </footer>
-        </article>
-    )
+function Item ({producto}) {
+    return(
+        <Row xs={1} md={2} className="g-4">
+            {Array.from({ length: 2}).map((_, idx) => (
+               <Col key={idx}>
+                    <Card>
+                        <Card.Img variant="top" src={producto.images[0]} />
+                        <Card.Body>
+                        <Card.Title>{producto.title}</Card.Title>
+                        <Card.Text>{producto.description}</Card.Text>
+                        <Button variant="primary">add to cart</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            ))}
+        </Row>
+    );
 }
+
+export default Item;
